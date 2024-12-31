@@ -19,6 +19,8 @@ public class DepartmentService  {
 
     public Department getDepartmentById(Long departmentId) {
         log.info("Inside the method of get-the-department-By-Id of department-service");
-        return departmentRepository.findById(departmentId).get();
+        if (departmentRepository.findById(departmentId).isPresent())
+            return departmentRepository.findById(departmentId).get();
+        return null;
     }
 }
